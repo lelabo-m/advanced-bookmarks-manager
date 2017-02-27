@@ -1,0 +1,24 @@
+{
+  "name": "Advanced Bookmarks Manager",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Alternative bookmarks managing system.",
+  "browser_action": {
+    "default_icon": "assets/images/logo.png"
+  },
+  "background": {
+    "scripts": [
+      "app/constant.js",
+      "app/lib/debug.js",
+      "app/models/bookmark.js",
+      "app/models/bookmark_query.js",
+      "app/lib/bookmarks-manager.js",
+      "app/background/controls.js",
+      "app/background/background.js"
+    ]
+  },
+  "permissions": [
+    "bookmarks",
+    "debugger"
+  ]
+}
