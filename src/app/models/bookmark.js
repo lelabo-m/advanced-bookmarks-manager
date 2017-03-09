@@ -74,6 +74,17 @@ angular.module('advbookmarks-bg').factory('BookmarkQuery', function() {
         return query;
     };
 
+    BookmarkQuery.prototype.to_query = function () {
+        var parameters = ["title", "url"];
+        var query = {};
+        for (var i = 0; i < parameters.length; i++) {
+            var name = parameters[i];
+            if (this[name] != null) {
+                query[name] = this[name];
+            }
+        }
+        return query;
+    };
     /**
      * Private property
      */
