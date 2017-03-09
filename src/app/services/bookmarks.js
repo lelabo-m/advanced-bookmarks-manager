@@ -1,23 +1,37 @@
 /**
  * Created by lelabo on 28/02/17.
  */
-angular.module('advbookmarks-bg',[]).service('BookmarkService', function(Bookmark) {
+angular.module('advbookmarks-bg').service('BookmarkService', function($q, Bookmark) {
+
+    function result_to_bookmarks(results) {
+        var founds = [];
+        for (var i = 0; i < results.length; i++) {
+            founds.push(Bookmark.from_array(results[i]));
+        }
+        return founds
+    }
 
     this.create = function (bookmark) {
-        this.exist(bookmark.to_query(), function (result) {
-            if (!result.length) {
-                chrome.bookmarks.create(bookmark.to_query(), function (result) {
-                    var res = Bookmark.from_array(result);
-                    Debug.inspect_object(res);
-                    return res;
+        var defer = $q.defer();
+        chrome.bookmarks.search(bookmark.to_query(), function (results) {
+            if (!results.length) {
+                chrome.bookmarks.create(bookmark.to_array(), function (results) {
+                    defer.resolve(result_to_bookmarks(results));
                 });
             }
+            else {
+                defer.resolve(result_to_bookmarks(results));
+            }
         });
-        // console.log(res);
+        return defer.promise;
     };
 
-    this.exist = function (query, callback) {
-        chrome.bookmarks.search(query, callback)
+    this.get = function (bookmark) {
+        var defer = $q.defer();
+        chrome.bookmarks.search(bookmark.to_query(), function (results) {
+            defer.resolve(result_to_bookmarks(results));
+        });
+        return defer.promise;
     };
 
 });
