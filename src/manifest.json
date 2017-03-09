@@ -2,6 +2,7 @@
   "name": "Advanced Bookmarks Manager",
   "version": "0.0.1",
   "manifest_version": 2,
+  "minimum_chrome_version": "42",
   "description": "Alternative bookmarks managing system.",
   "browser_action": {
     "default_icon": "assets/images/logo.png"
@@ -9,8 +10,22 @@
   "background": {
     "page": "/app/background/background.html"
   },
-  "permissions": [
-    "bookmarks",
-    "debugger"
-  ]
+//  "chrome_ui_overrides": {
+//    "bookmarks_ui": {
+//      "remove_bookmark_shortcut": true,
+//      "remove_button": true
+//    }
+//  },
+  "commands": {
+    "_execute_page_action": {
+      "description": "Stars popup",
+      "suggested_key": {
+        "default": "Ctrl+D"
+      }
+    }
+  },
+  "chrome_url_overrides": {
+    "bookmarks": "/app/front/bookmark_popup.html"
+  },
+  "permissions": [ "activeTab", "bookmarks", "debugger"]
 }
