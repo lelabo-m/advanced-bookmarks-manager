@@ -5,7 +5,8 @@
   "minimum_chrome_version": "42",
   "description": "Alternative bookmarks managing system.",
   "browser_action": {
-    "default_icon": "assets/images/logo.png"
+    "default_icon": "assets/images/logo.png",
+    "default_popup": "app/front/add_popup.html"
   },
   "background": {
     "page": "/app/background/background.html"
@@ -17,15 +18,17 @@
 //    }
 //  },
   "commands": {
-    "_execute_page_action": {
+    "_execute_browser_action": {
       "description": "Stars popup",
       "suggested_key": {
-        "default": "Ctrl+D"
+        "default": "Ctrl+D",
+        "mac": "Command+D",
+        "linux": "Ctrl+D"
       }
     }
   },
   "chrome_url_overrides": {
-    "bookmarks": "/app/front/bookmark_popup.html"
+    "bookmarks": "app/front/bookmarkmanager_page.html"
   },
-  "permissions": [ "activeTab", "bookmarks", "debugger"]
+  "permissions": [ "activeTab", "bookmarks", "debugger", "tabs"]
 }
