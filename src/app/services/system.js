@@ -24,7 +24,10 @@ angular.module('advbookmarks-bg').service('SystemService', function(global, Book
 
     this.commands_initialization = function () {
         chrome.commands.onCommand.addListener(function(command) {
-            console.log('Command:', command);
+           if (command == "bookmarks-add") {
+               // chrome.windows.create({'url': '/app/front/add_popup.html', 'type': 'panel'}, function(window) {
+               // });
+           }
         });
     };
 
