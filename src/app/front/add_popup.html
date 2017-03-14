@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-csp>
+<head>
+    <!--<meta charset="utf-8">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--<meta name="description" content="">-->
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />-->
+
+    <title>Background Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css" type="text/css">
+    <link rel="stylesheet" href="add_popup.css" type="text/css">
+
+
+</head>
+
+<body ng-app="popup_app">
+    <div layout-padding="" ng-cloak="" class="md-inline-form" ng-controller="BookmarkSettingsController">
+        <md-content>
+            <div>
+                <h3>Bookmark</h3>
+                <form name="BookmarkingForm" ng-submit="bookmarking(BookmarkingForm, tab)" style="width: 100%">
+                    <div layout-gt-sm="row">
+                        <md-input-container  class="md-block" flex-gt-sm="">
+                            <label>Name</label>
+                            <input type="text" name="name" ng-model="tab.name"/>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs="" style="margin-top: -20px;">
+                            <label>Folder</label>
+                            <input type="text" name="folder" ng-model="tab.folder"/>
+                        </md-input-container>
+                        <!--<div layout="row" flex="100">-->
+                            <!--<md-button class="md-raised md-ink-ripple">Remove</md-button>-->
+                            <!--<md-button class="md-raised md-ink-ripple">Edit ...</md-button>-->
+                            <!--<md-button class="md-raised md-ink-ripple">Done</md-button>-->
+                        <!--</div>-->
+                    </div>
+                </form>
+            </div>
+        </md-content>
+    </div>
+
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.js"></script>
+    <script src="/node_modules/angular-material/angular-material.js"></script>
+
+    <script src="/app/front/add_popup.js"></script>
+</body>
+</html>
