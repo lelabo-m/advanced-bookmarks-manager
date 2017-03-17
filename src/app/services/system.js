@@ -7,15 +7,15 @@ angular.module('advbookmarks-bg').service('SystemService', function(global, Book
     this.root_dir = null;
 
     this.tree_initialization = function () {
-        BookmarkService.create(BookmarkQuery.Directory(global.root_dir))
+        BookmarkService.get_or_create(BookmarkQuery.Directory(global.root_dir))
             .then(function (results) {
                 self.root = results[0];
                 var tmp = BookmarkQuery.Directory(global.read_later_dir, self.root.id);
-                BookmarkService.create(tmp)
+                BookmarkService.get_or_create(tmp)
                     .then(function (results) {
                         self.read_later = results[0];
                     });
-                BookmarkService.create(BookmarkQuery.Directory(global.interests_dir, self.root.id))
+                BookmarkService.get_or_create(BookmarkQuery.Directory(global.interests_dir, self.root.id))
                     .then(function (results) {
                         self.interests = results[0];
                     });

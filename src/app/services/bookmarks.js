@@ -11,7 +11,7 @@ angular.module('advbookmarks-bg').service('BookmarkService', function($q, Bookma
         return founds
     }
 
-    this.create = function (bookmark) {
+    this.get_or_create = function (bookmark) {
         var defer = $q.defer();
         chrome.bookmarks.search(bookmark.to_query(), function (results) {
             if (!results.length) {
